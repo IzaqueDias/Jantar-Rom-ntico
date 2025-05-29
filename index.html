@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Jantar Romântico</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fff8f0;
+      color: #333;
+      margin: 0;
+      padding: 20px;
+      text-align: center;
+    }
+    h1 {
+      color: #e91e63;
+    }
+    .foto-casal {
+      width: 150px;
+      border-radius: 50%;
+      margin-bottom: 20px;
+    }
+    .cardapio {
+      max-width: 600px;
+      margin: 0 auto;
+      text-align: left;
+    }
+    .prato {
+      margin: 10px 0;
+    }
+    button {
+      background-color: #e91e63;
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+    button:hover {
+      background-color: #c2185b;
+    }
+    .categoria {
+      margin-top: 30px;
+      margin-bottom: 10px;
+      font-weight: bold;
+      font-size: 18px;
+      color: #444;
+    }
+    label {
+      display: block;
+      margin: 5px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <img src="https://i.imgur.com/j4FjvZ0.jpg" alt="Foto do casal" class="foto-casal"/>
+
+  <h1>Noite da Escolha</h1>
+  <p>Escolha o que vamos saborear hoje! 🥰</p>
+
+  <div class="cardapio">
+    <div class="categoria">Prato Principal (Escolha um)</div>
+    <label class="prato"><input type="radio" name="principal" value="Frango do Coração"> Frango do Coração</label>
+    <label class="prato"><input type="radio" name="principal" value="Paixão de Costela"> Paixão de Costela</label>
+    <label class="prato"><input type="radio" name="principal" value="Macarrão da Saudade"> Macarrão da Saudade</label>
+    <label class="prato"><input type="radio" name="principal" value="Medalhão ao Amor"> Medalhão ao Amor</label>
+    <label class="prato"><input type="radio" name="principal" value="Purê do Amor com Charme de Carne"> Purê do Amor com Charme de Carne</label>
+    <label class="prato"><input type="radio" name="principal" value="Purê de Batata"> Purê de Batata</label>
+    <label class="prato"><input type="radio" name="principal" value="Botão de Confirmação"> Botão de Confirmação</label>
+
+    <div class="categoria">Sobremesa (opcional)</div>
+    <label><input type="checkbox" name="sobremesa" value="Brigadeiro de colher"> Brigadeiro de colher</label>
+
+    <div class="categoria">Bebidas (opcional)</div>
+    <label><input type="checkbox" name="bebida" value="Vinho"> Vinho</label>
+    <label><input type="checkbox" name="bebida" value="Coca Zero"> Coca Zero</label>
+  </div>
+
+  <button onclick="confirmarPedido()">Quero esse para nosso jantar ❤️</button>
+
+  <audio autoplay loop>
+    <source src="https://www.dropbox.com/scl/fi/qslh6jz4oeybm4tib5lsn/garotas-nao-merecem-chorar.mp3?rlkey=bo9z1pxgxaqkffv1xeuz65mmd&raw=1" type="audio/mpeg">
+    Seu navegador não suporta áudio.
+  </audio>
+
+  <script>
+    function confirmarPedido() {
+      const escolha = document.querySelector('input[name="principal"]:checked');
+      if (!escolha) {
+        alert("Por favor, escolha um dos pratos principais antes de confirmar.");
+        return;
+      }
+
+      const pratoEscolhido = escolha.value;
+
+      const sobremesas = Array.from(document.querySelectorAll('input[name="sobremesa"]:checked')).map(el => el.value);
+      const bebidas = Array.from(document.querySelectorAll('input[name="bebida"]:checked')).map(el => el.value);
+
+      let mensagem = `Oi amor! 💌\nEu escolhi:\n🍽 Prato principal: ${pratoEscolhido}`;
+
+      if (sobremesas.length > 0) {
+        mensagem += `\n🍰 Sobremesa: ${sobremesas.join(", ")}`;
+      }
+
+      if (bebidas.length > 0) {
+        mensagem += `\n🥤 Bebida(s): ${bebidas.join(", ")}`;
+      }
+
+      mensagem += `\n\nTe amo! 💖`;
+
+      // Link com seu número: (27) 99798-4742
+      const link = `https://wa.me/5527997984742?text=${encodeURIComponent(mensagem)}`;
+      window.location.href = link;
+    }
+  </script>
+</body>
+</html>
+Adicionar arquivo index.html
